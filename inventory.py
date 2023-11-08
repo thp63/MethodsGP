@@ -7,6 +7,5 @@ class Inventory:
         #
     def searchInventory():
         title = intput("Please enter a title: ")
-        SELECT from databaseName where title = "%" + title + "%"
 
     def decreaseStock(ISBN):
