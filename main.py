@@ -45,8 +45,6 @@ while optionBFL != 0:
         #while optionAFL != 0:
         #    if optionAFL == 1:
                 
-
-
     elif optionBFL == 2:
         print("Creating account...\n")
         #Call create Account from User

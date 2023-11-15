@@ -9,3 +9,4 @@ class Inventory:
         title = intput("Please enter a title: ")
 
     def decreaseStock(ISBN):
+        return
