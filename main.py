@@ -1,4 +1,36 @@
-#Menu Before Login
+#Imports
+from user import login, logout, viewAccountInformation, createAccount
+from inventory import viewInventory, searchInventory, decreaseStock
+from Cart import viewCart, addToCart, removeFromCart, checkOut
+
+#Starts menu sequencing
+def start():
+    menuBFL()
+    optionBFL = int(input("Option (0-3): "))
+    while optionBFL != 0:
+        if optionBFL == 1:
+            print("Logging in...\n")
+            login()
+            if login() == True:
+                menuAFL()
+
+        elif optionBFL == 2:
+            print("Creating account...\n")
+            #Call create Account from User
+            createAccount()
+
+        elif optionBFL == 3:
+            print("Logging out...\n")
+            #Call Logout from user
+            logout()
+
+        else:
+            print("Invalid option! Try again!\n")
+        menuBFL()
+        optionBFL = int(input("Option (0-3): "))
+print("Exiting...")
+
+#Menu before Login
 def menuBFL():
     print("MethodsGP Menu")
     print("(0) Exit")
@@ -8,54 +40,70 @@ def menuBFL():
 
 #Menu After Login
 def menuAFL():
-    print("() View Account Information: ")
-    print("() Inventory Information")
-    print("() Cart Information")
-    print("() Logout")
+    print("(1) View Account Information: ")
+    print("(2) Inventory Information")
+    print("(3) Cart Information")
+    print("(4) Logout")
+    optionAFL = int(input("Option (1-4): "))
+    while optionAFL:
+        if optionAFL == 1:
+            viewAccountInformation()
+        elif optionAFL == 2:
+            menuInventory()
+        elif optionAFL == 3:
+            menuCart()
+        elif optionAFL == 4:
+            logout()
+        else:
+            print("Invalid option! Try again!\n")
+        menuAFL()
+        optionAFL = int(input("Option (1-4): "))
 
 #Menu for Inventory
 def menuInventory():
-    print("() Previous")
-    print("() View Inventory")
-    print("() Search Inventory")
+    print("(1) Previous")
+    print("(2) View Inventory")
+    print("(3) Search Inventory")
+    optionINV = int(input("Option (1-3): "))
+    while optionINV:
+        if optionINV == 1:
+            menuAFL()
+        elif optionINV == 2:
+            viewInventory()
+        elif optionINV == 3:
+            searchInventory()
+        else:
+            print("Invalid option! Try again!\n")
+        menuInventory()
+        optionINV = int(input("Option (1-3): "))
 
 #Menu for Cart
 def menuCart():
-    print("() Previous")
-    print("() View Cart")
-    print("() Add Item(s) to Cart")
-    print("() Remove Item from Cart")
-    print("() Check Out")
+    print("(1) Previous")
+    print("(2) View Cart")
+    print("(3) Add Item to Cart")
+    print("(4) Remove Item from Cart")
+    print("(5) Check Out")
+    optionCART = int(input("Option (1-3): "))
+    while optionCART:
+        if optionCART == 1:
+            menuAFL()
+        elif optionCART == 2:
+            viewCart()
+        elif optionCART == 3:
+            addToCart()
+        elif optionCART == 4:
+            removeFromCart()
+        elif optionCART == 5:
+            checkOut()
+        else:
+            print("Invalid option! Try again!\n")
+        menuInventory()
+        optionCART = int(input("Option (1-3): "))
 
 
 #Variables
 
-
 #Main
-
-menuBFL()
-optionBFL = int(input("Option (0-3): "))
-
 #Menu Loop
-while optionBFL != 0:
-    if optionBFL == 1:
-        print("Logging in...\n")
-        #Call login from user
-        #menuAFL()
-        #while optionAFL != 0:
-        #    if optionAFL == 1:
-                
-    elif optionBFL == 2:
-        print("Creating account...\n")
-        #Call create Account from User
-
-    elif optionBFL == 3:
-        print("Logging out...\n")
-        #Call Logout from user
-
-    else:
-        print("Invalid option! Try again!\n")
-    menuBFL()
-    optionBFL = int(input("Option (0-3): "))
-
-print("Exiting...")
+start()
