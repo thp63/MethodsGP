@@ -7,12 +7,12 @@ class Inventory:
 
     def viewInventory():
         connection = sqlite3.connect("MethodsGPDB.db")
-        cursor = conncection.cusor()
+        cursor = connection.cusor()
         cursor.execute("SELECT * FROM Inventory")
 
     def searchInventory():
         connection = sqlite3.connect("MethodsGPDB.db")
-        cursor = conncection.cusor()
+        cursor = connection.cusor()
         answer = yes
         while answer == "yes":
             title = input("Enter the title for the book you are looking for:")
