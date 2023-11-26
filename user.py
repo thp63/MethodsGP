@@ -2,9 +2,6 @@ import sqlite3
 
 
 class User:
-    def _init_(self):
-        self.userId =""
-        self.loggedIn = False
     def _init_(self, dbName, tableName):
         self.dbName = dbName
         self.tableName = tableName

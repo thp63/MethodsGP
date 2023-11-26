@@ -1,7 +1,7 @@
 #Imports
 #Import User Class and create instance so it can be properly used
 from user import User
-user_instance = User(dbName='your_database_name.db', tableName='your_table_name')
+user_instance = User(dbName='MethodsGPDB.db', tableName='User')
 
 #will need to import inventory and cart in the same way as User class
 from inventory import viewInventory, searchInventory, decreaseStock
@@ -14,7 +14,6 @@ def start():
     while optionBFL != 0:
         if optionBFL == 1:
             print("Logging in...\n")
-            user_instance.login()
             if user_instance.login() == True:
                 menuAFL()
 
@@ -102,7 +101,7 @@ def menuCart():
             checkOut()
         else:
             print("Invalid option! Try again!\n")
-        menuInventory()
+        menuCart()
         optionCART = int(input("Option (1-3): "))
 
 
