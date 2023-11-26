@@ -2,7 +2,7 @@ import sqlite3
 
 
 class User:
-    def _init_(self, dbName, tableName):
+    def __init__(self, dbName, tableName):
         self.dbName = dbName
         self.tableName = tableName
         self.userId =""
