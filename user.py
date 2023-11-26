@@ -8,6 +8,8 @@ class User:
     def _init_(self, dbName, tableName):
         self.dbName = dbName
         self.tableName = tableName
+        self.userId =""
+        self.loggedIn = False
     def login(self):
         #ask for creds
         attemptedId = input("User ID: ")

@@ -1,5 +1,9 @@
 #Imports
-from user import login, logout, viewAccountInformation, createAccount
+#Import User Class and create instance so it can be properly used
+from user import User
+user_instance = User(dbName='your_database_name.db', tableName='your_table_name')
+
+#will need to import inventory and cart in the same way as User class
 from inventory import viewInventory, searchInventory, decreaseStock
 from Cart import viewCart, addToCart, removeFromCart, checkOut
 
@@ -10,19 +14,19 @@ def start():
     while optionBFL != 0:
         if optionBFL == 1:
             print("Logging in...\n")
-            login()
-            if login() == True:
+            user_instance.login()
+            if user_instance.login() == True:
                 menuAFL()
 
         elif optionBFL == 2:
             print("Creating account...\n")
             #Call create Account from User
-            createAccount()
+            user_instance.createAccount()
 
         elif optionBFL == 3:
             print("Logging out...\n")
             #Call Logout from user
-            logout()
+            user_instance.logout()
 
         else:
             print("Invalid option! Try again!\n")
@@ -47,13 +51,13 @@ def menuAFL():
     optionAFL = int(input("Option (1-4): "))
     while optionAFL:
         if optionAFL == 1:
-            viewAccountInformation()
+            user_instance.viewAccountInformation()
         elif optionAFL == 2:
             menuInventory()
         elif optionAFL == 3:
             menuCart()
         elif optionAFL == 4:
-            logout()
+            user_instance.logout()
         else:
             print("Invalid option! Try again!\n")
         menuAFL()
