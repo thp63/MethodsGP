@@ -15,25 +15,15 @@ class User:
         #connect to DB and search for matching
         connection = sqlite3.connect("MethodsGPDB.db")
         cursor = connection.cursor()
-        cursor.execute("SELECT UserID, Password FROM User WHERE UserID=" + attemptedId + ", Password=" + attemptedPass)
+        cursor.execute("SELECT UserID, Password FROM User WHERE UserID=? AND Password=?", (attemptedId, attemptedPass))
         result = cursor.fetchall()
         cursor.close()
         connection.close()
-        #ID result from db
-        DBID = result[0][0]
-        #Pass result from db
-        DBPass = result[0][1]
-        #validate search
-        if DBID != attemptedId or DBPass != attemptedPass:
-            if DBID != attemptedId:
-                print("User ID not found")
-            if DBPass != attemptedPass:
-                print("Incorrect Pass")
+        if not result:
+            print("User ID or password incorrect")
             return False
         else:
-            #set variables
-            self.password = attemptedPass
-            self.userId = attemptedId
+            self.userId = result[0][0]
             self.loggedIn = True
             return True
     def logout(self):
@@ -43,31 +33,79 @@ class User:
     def viewAccountInformation(self):
         connection = sqlite3.connect("MethodsGPDB.db")
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM User WHERE UserID=" + self.userId)
+        cursor.execute("SELECT * FROM User WHERE UserID=?", (self.userId,))
         result = cursor.fetchall()
-        for x in result:
-            for y in x:
-                print(y)
+        for row in result:
+            for value in row:
+                print(value)
         cursor.close()
         connection.close()
         return
     def createAccount(self):
         #Have to get all the values for creating account
-        #Still need to do data validation
-        self.userId = input("User ID: ")
-        self.email = input("Email: ")
-        self.password = input("Password: ")
-        self.Fname = input("First Name: ")
-        self.Lname = input("Last Name: ")
-        self.address = input("Address: ")
-        self.city = input("City: ")
-        self.state = input("State: ")
-        self.zip = input("Zip: ")
-        self.payment = input("Payment: ")
+
+        # Validate User ID
+        while True:
+            self.userId = input("User ID: ")
+            if not self.userId.isdigit():
+                print("User ID must be a number.")
+            else:
+                break
+
+        # Validate Email
+        while True:
+            self.email = input("Email: ")
+            if not self.email.isalpha():
+                print("Invalid email format.")
+            else:
+                break
+
+        # Validate Password
+        while True:
+            self.password = input("Password: ")
+            if not self.password.isalnum():
+                print("Password must only contain letters and numbers")
+            else:
+                break
+
+        # Validate First Name and Last Name
+        while True:
+            self.Fname = input("First Name: ")
+            self.Lname = input("Last Name: ")
+            if not (self.Fname.isalpha() and self.Lname.isalpha()):
+                print("First and Last Names must contain only letters.")
+            else:
+                break
+
+        # Validate Address, City, and State
+        while True:
+            self.address = input("Address: ")
+            self.city = input("City: ")
+            self.state = input("State: ")
+            if not (self.address.isalnum() and self.city.isalpha() and self.state.isalpha()):
+                print("Invalid characters in Address, City, or State.")
+            else:
+                break
+
+        # Validate Zip 
+        while True:
+            self.zip = input("Zip: ")
+            if not self.zip.isdigit():
+                print("Zip must be a number.")
+            else:
+                break
+
+        # Validate Payment 
+        while True:
+            self.payment = input("Payment: ")
+            if not self.payment.isalnum():
+                print("Payment must be Alphanumeric")
+            else:
+                break
         
         connection = sqlite3.connect("MethodsGPDB.db")
         cursor = connection.cursor()
-        #Have to finish adding values below
+        #Insert given info into User table
         cursor.execute("INSERT INTO User (UserID, Email, Password, FirstName, LastName, Address, City, State, Zip, Payment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                (self.userId, self.email, self.password, self.Fname, self.Lname, self.address, self.city, self.state, self.zip, self.payment))
         connection.commit()
