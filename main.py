@@ -67,7 +67,8 @@ def menuInventory():
     print("(1) Previous")
     print("(2) View Inventory")
     print("(3) Search Inventory")
-    optionINV = int(input("Option (1-3): "))
+    print("(4) Decrease Stock")
+    optionINV = int(input("Option (1-4): "))
     while optionINV:
         if optionINV == 1:
             menuAFL()
@@ -75,10 +76,12 @@ def menuInventory():
             viewInventory()
         elif optionINV == 3:
             searchInventory()
+        elif optionINV == 4:
+            decreaseStock()
         else:
             print("Invalid option! Try again!\n")
         menuInventory()
-        optionINV = int(input("Option (1-3): "))
+        optionINV = int(input("Option (1-4): "))
 
 #Menu for Cart
 def menuCart():
