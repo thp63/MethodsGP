@@ -13,8 +13,8 @@ class Inventory:
             print("Error: Connection Failed")
             sys.exit()
         cursor = connection.cusor()
-        result = cursor.execute("SELECT * FROM Inventory")
-
+        cursor.execute("SELECT * FROM Inventory")
+        result = cursor.fetchall()
         for i in result:
             for j in i:
                 print(j, end = " | ")
@@ -25,24 +25,24 @@ class Inventory:
 
     def searchInventory():
         try:
-                connection = sqlite3.connect("MethodsGPDB.db")
+            connection = sqlite3.connect("MethodsGPDB.db")
         except:
-                print("Error: Could not connect")
-                sys.exit()
+            print("Error: Could not connect")
+            sys.exit()
 
         cursor = connection.cursor()
         title = input("Enter a title: ")
-        query = "SELECT Title, Author, Stock FROM Inventory WHERE Title=?"
+        query = "SELECT * FROM Inventory WHERE Title=?"
         cursor.execute(query, title)
         result = cursor.fetchall()
 
         if not result:
-                print("No results")
+            print("No results")
         else:
-                for x in result:
-                        for y in x:
-                                print(y, end = " | ")
-                        print()
+            for x in result:
+                for y in x:
+                    print(y, end = " | ")
+                print()
                 
 
     def decreaseStock(self, ISBN):
