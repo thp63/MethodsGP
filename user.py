@@ -1,5 +1,5 @@
 import sqlite3
-
+import sys
 
 class User:
     def __init__(self, dbName, tableName):
@@ -12,7 +12,10 @@ class User:
         attemptedId = input("User ID: ")
         attemptedPass = input("Password: ")
         #connect to DB and search for matching
-        connection = sqlite3.connect("MethodsGPDB.db")
+        try:
+            connection = sqlite3.connect("MethodsGPDB.db")
+        except: 
+            sys.exit()
         cursor = connection.cursor()
         cursor.execute("SELECT UserID, Password FROM User WHERE UserID=? AND Password=?", (attemptedId, attemptedPass))
         result = cursor.fetchall()
@@ -30,7 +33,11 @@ class User:
         self.userId = ""
         return
     def viewAccountInformation(self):
-        connection = sqlite3.connect("MethodsGPDB.db")
+        try:
+            connection = sqlite3.connect("MethodsGPDB.db")
+        except: 
+            print("Database Connection Failed")
+            sys.exit()
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM User WHERE UserID=?", (self.userId,))
         result = cursor.fetchall()
@@ -102,7 +109,11 @@ class User:
             else:
                 break
         
-        connection = sqlite3.connect("MethodsGPDB.db")
+        try:
+            connection = sqlite3.connect("MethodsGPDB.db")
+        except: 
+            print("Database Connection Failed")
+            sys.exit()
         cursor = connection.cursor()
         #Insert given info into User table
         cursor.execute("INSERT INTO User (UserID, Email, Password, FirstName, LastName, Address, City, State, Zip, Payment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",

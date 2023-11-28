@@ -1,4 +1,5 @@
 import sqlite3
+import sys
 
 class Inventory:
     def __init__(self, databaseName = 0, tableName = 0):
@@ -10,20 +11,24 @@ class Inventory:
             connection = sqlite3.connect("MethodsGPDB.db")
         except:
             print("Error: Connection Failed")
-            
+            sys.exit()
         cursor = connection.cusor()
         result = cursor.execute("SELECT * FROM Inventory")
 
         for i in result:
             for j in i:
                 print(j, end = " | ")
-            print(\n\n)
+            print("\n\n")
 
         cursor.close()
         connection.close()
 
     def searchInventory():
-        connection = sqlite3.connect("MethodsGPDB.db")
+        try:
+            connection = sqlite3.connect("MethodsGPDB.db")
+        except: 
+            print("Database Connection Failed")
+            sys.exit()
         cursor = connection.cusor()
         answer = yes
         while answer == "yes":
@@ -32,4 +37,4 @@ class Inventory:
             answer = input("Would you like to search again?(yes/no): ")
 
     def decreaseStock(self, ISBN):
-        
+        pass

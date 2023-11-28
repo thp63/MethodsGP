@@ -1,5 +1,6 @@
 import sqlite3
 import inventory
+import sys
 
 class Cart:
 
@@ -8,7 +9,11 @@ class Cart:
         self.tablename = tableName
 
     def viewCart(self, userID, inventoryDatabase):
-        connection = sqlite3.connect("MethodsGPDB.db")
+        try:
+            connection = sqlite3.connect("MethodsGPDB.db")
+        except: 
+            print("Database Connection Failed")
+            sys.exit()
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM Cart")
         result = cursor.fetchall()
@@ -19,7 +24,11 @@ class Cart:
         return
 
     def addToCart(self, userID, ISBN):
-        connection = sqlite3.connect("MethodsGPDB.db")
+        try:
+            connection = sqlite3.connect("MethodsGPDB.db")
+        except: 
+            print("Database Connection Failed")
+            sys.exit()
         cursor = connection.cursor()
         cursor.execute("INSERT INTO CART (UserID, ISBN, Quantity) VALUES (" + userID + ", " + ISBN + ", 1)")
         connection.commit()
@@ -28,7 +37,11 @@ class Cart:
         return
 
     def removeFromCart(self, userID, ISBN):
-        connection = sqlite3.connect("MethodsGPDB.db")
+        try:
+            connection = sqlite3.connect("MethodsGPDB.db")
+        except: 
+            print("Database Connection Failed")
+            sys.exit()
         cursor = connection.cursor()
         cursor.execute("DELETE FROM Cart WHERE UserID=" + userID + ", ISBN=" + ISBN)
         cursor.close()
@@ -36,7 +49,11 @@ class Cart:
         return
 
     def checkOut(self, userID):
-        connection = sqlite3.connect("MethodsGPDB.db")
+        try:
+            connection = sqlite3.connect("MethodsGPDB.db")
+        except: 
+            print("Database Connection Failed")
+            sys.exit()
         cursor = connection.cursor()
         decreaseInvetory(ISBN)
         cursor.execute("DELETE * FROM Cart WHERE UserID=" + userID)
