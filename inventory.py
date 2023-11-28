@@ -25,16 +25,25 @@ class Inventory:
 
     def searchInventory():
         try:
-            connection = sqlite3.connect("MethodsGPDB.db")
-        except: 
-            print("Database Connection Failed")
-            sys.exit()
-        cursor = connection.cusor()
-        answer = yes
-        while answer == "yes":
-            title = input("Enter the title for the book you are looking for:")
-            cursor.execute("SELECT * FROM Inventory WHERE Title = %" + title + "%")
-            answer = input("Would you like to search again?(yes/no): ")
+                connection = sqlite3.connect("MethodsGPDB.db")
+        except:
+                print("Error: Could not connect")
+                sys.exit()
+
+        cursor = connection.cursor()
+        title = input("Enter a title: ")
+        query = "SELECT Title, Author, Stock FROM Inventory WHERE Title=?"
+        cursor.execute(query, title)
+        result = cursor.fetchall()
+
+        if not result:
+                print("No results")
+        else:
+                for x in result:
+                        for y in x:
+                                print(y, end = " | ")
+                        print()
+                
 
     def decreaseStock(self, ISBN):
         pass
