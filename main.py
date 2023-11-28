@@ -5,7 +5,10 @@ user_instance = User(dbName='MethodsGPDB.db', tableName='User')
 
 #will need to import inventory and cart in the same way as User class
 from inventory import viewInventory, searchInventory, decreaseStock
-from Cart import viewCart, addToCart, removeFromCart, checkOut
+
+#Imports Cart class and creates it's instance
+from Cart import Cart
+cart_instance = Cart(databaseName='MethodsGPDB.db', tableName='Cart'
 
 #Starts menu sequencing
 def start():
@@ -54,7 +57,7 @@ def menuAFL():
         elif optionAFL == 2:
             menuInventory()
         elif optionAFL == 3:
-            menuCart()
+            cart_instance.menuCart()
         elif optionAFL == 4:
             user_instance.logout()
         else:
@@ -95,21 +98,17 @@ def menuCart():
         if optionCART == 1:
             menuAFL()
         elif optionCART == 2:
-            viewCart()
+            cart_instance.viewCart()
         elif optionCART == 3:
-            addToCart()
+            cart_instance.addToCart()
         elif optionCART == 4:
-            removeFromCart()
+            cart_instance.removeFromCart()
         elif optionCART == 5:
-            checkOut()
+            cart_instance.checkOut()
         else:
             print("Invalid option! Try again!\n")
         menuCart()
         optionCART = int(input("Option (1-3): "))
 
-
-#Variables
-
-#Main
-#Menu Loop
+#Starts Main/Menu Loop
 start()
