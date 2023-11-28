@@ -1,5 +1,5 @@
 import sqlite3
-import inventory
+import inventory 
 import sys
 
 class Cart:
@@ -55,7 +55,7 @@ class Cart:
             print("Database Connection Failed")
             sys.exit()
         cursor = connection.cursor()
-        decreaseInvetory(ISBN)
+        decreaseStock(ISBN)
         cursor.execute("DELETE * FROM Cart WHERE UserID=" + userID)
         cursor.close()
         connection.close()

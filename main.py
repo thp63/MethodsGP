@@ -4,7 +4,8 @@ from user import User
 user_instance = User(dbName='MethodsGPDB.db', tableName='User')
 
 #will need to import inventory and cart in the same way as User class
-from inventory import viewInventory, searchInventory, decreaseStock
+from inventory import Inventory
+inventory_instance = Inventory(databaseName='MethodsGPDB.db', tableName='Inventory')
 
 #Imports Cart class and creates it's instance
 from Cart import Cart
@@ -55,7 +56,7 @@ def menuAFL():
         if optionAFL == 1:
             user_instance.viewAccountInformation()
         elif optionAFL == 2:
-            menuInventory()
+            inventory_instance.menuInventory()
         elif optionAFL == 3:
             cart_instance.menuCart()
         elif optionAFL == 4:
@@ -70,17 +71,14 @@ def menuInventory():
     print("(1) Previous")
     print("(2) View Inventory")
     print("(3) Search Inventory")
-    print("(4) Decrease Stock")
     optionINV = int(input("Option (1-4): "))
     while optionINV:
         if optionINV == 1:
             menuAFL()
         elif optionINV == 2:
-            viewInventory()
+            inventory_instance.viewInventory()
         elif optionINV == 3:
-            searchInventory()
-        elif optionINV == 4:
-            decreaseStock(ISBN)
+            inventory_instance.searchInventory()
         else:
             print("Invalid option! Try again!\n")
         menuInventory()
