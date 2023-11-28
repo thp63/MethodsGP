@@ -43,8 +43,10 @@ class Inventory:
                 for y in x:
                     print(y, end = " | ")
                 print()
-                
 
+        cursor.close()
+        connection.close()
+                
     def decreaseStock(self, ISBN):
         try:
             connection = sqlite3.connect("MethodsGPDB.db")
