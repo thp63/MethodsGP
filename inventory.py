@@ -46,4 +46,21 @@ class Inventory:
                 
 
     def decreaseStock(self, ISBN):
-        pass
+        try:
+            connection = sqlite3.connect("MethodsGPDB.db")
+        except:
+            print("Error: Could not connect")
+            sys.exit()
+        cursor = connection.cursor()
+        query = "SELECT Stock FROM Inventory WHERE ISBN=?"
+        cursor.execute(query, ISBN)
+        result = cursor.fetchall()
+
+        stock = result[0][0]
+        stock -= 1
+
+        query = "UPDATE Inventory SET Stock=? WHERE ISBN=?"
+        cursor.execute(query, stock, ISBN)
+        connection.commit()
+        cursor.close()
+        connection.close()
