@@ -8,7 +8,7 @@ from inventory import viewInventory, searchInventory, decreaseStock
 
 #Imports Cart class and creates it's instance
 from Cart import Cart
-cart_instance = Cart(databaseName='MethodsGPDB.db', tableName='Cart'
+cart_instance = Cart(databaseName='MethodsGPDB.db', tableName='Cart')
 
 #Starts menu sequencing
 def start():
