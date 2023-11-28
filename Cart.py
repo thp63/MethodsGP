@@ -1,5 +1,6 @@
 import sqlite3
-import inventory 
+from inventory import Inventory
+inventory_instance = Inventory(databaseName='MethodsGPDB.db', tableName='Inventory')
 import sys
 
 class Cart:
@@ -29,6 +30,7 @@ class Cart:
         except: 
             print("Database Connection Failed")
             sys.exit()
+        self.ISBN = input("ISBN of Book to add: ")
         cursor = connection.cursor()
         cursor.execute("INSERT INTO CART (UserID, ISBN, Quantity) VALUES (" + userID + ", " + ISBN + ", 1)")
         connection.commit()
@@ -42,6 +44,7 @@ class Cart:
         except: 
             print("Database Connection Failed")
             sys.exit()
+        self.ISBN = input("ISBN of Book to remove: ")
         cursor = connection.cursor()
         cursor.execute("DELETE FROM Cart WHERE UserID=" + userID + ", ISBN=" + ISBN)
         cursor.close()
@@ -55,7 +58,7 @@ class Cart:
             print("Database Connection Failed")
             sys.exit()
         cursor = connection.cursor()
-        decreaseStock(ISBN)
+        inventory_instance.decreaseStock(self.ISBN)
         cursor.execute("DELETE * FROM Cart WHERE UserID=" + userID)
         cursor.close()
         connection.close()
