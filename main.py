@@ -77,7 +77,7 @@ def menuInventory():
         elif optionINV == 3:
             searchInventory()
         elif optionINV == 4:
-            decreaseStock()
+            decreaseStock(ISBN)
         else:
             print("Invalid option! Try again!\n")
         menuInventory()
