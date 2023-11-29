@@ -60,6 +60,7 @@ class Cart:
         except: 
             print("Database Connection Failed")
             sys.exit()
+        print(userID)
         cursor = connection.cursor()
         query = ("SELECT 'ISBN' FROM Cart WHERE UserID=?")
         values = ((userID,))
