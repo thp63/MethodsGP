@@ -14,7 +14,7 @@ cart_instance = Cart(databaseName='MethodsGPDB.db', tableName='Cart')
 #Starts menu sequencing
 def start():
     menuBFL()
-    optionBFL = int(input("Option (0-3): "))
+    optionBFL = int(input("Option (0-2): "))
     while optionBFL != 0:
         if optionBFL == 1:
             print("Logging in...\n")
@@ -25,11 +25,6 @@ def start():
             print("Creating account...\n")
             #Call create Account from User
             user_instance.createAccount()
-
-        elif optionBFL == 3:
-            print("Logging out...\n")
-            #Call Logout from user
-            user_instance.logout()
 
         else:
             print("Invalid option! Try again!\n")
@@ -43,7 +38,6 @@ def menuBFL():
     print("(0) Exit")
     print("(1) Login")
     print("(2) Create Account")
-    print("(3) Logout")
 
 #Menu After Login
 def menuAFL():
@@ -92,7 +86,7 @@ def menuCart():
     print("(3) Add Item to Cart")
     print("(4) Remove Item from Cart")
     print("(5) Check Out")
-    optionCART = int(input("Option (1-3): "))
+    optionCART = int(input("Option (1-5): "))
     while optionCART:
         if optionCART == 1:
             menuAFL()
@@ -109,7 +103,7 @@ def menuCart():
         else:
             print("Invalid option! Try again!\n")
         menuCart()
-        optionCART = int(input("Option (1-3): "))
+        optionCART = int(input("Option (1-5): "))
 
 #Starts Main/Menu Loop
 start()
