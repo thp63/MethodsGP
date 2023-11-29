@@ -77,13 +77,8 @@ class User:
             else:
                 break
 
-        # Validate Address
-        while True:
-            self.address = input("Address: ")
-            if not self.address.isalnum():
-                print("Invalid Address")
-            else:
-                break
+        self.address = input("Address: ")
+            
         
         #Validate City
         while True:
