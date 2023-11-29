@@ -56,7 +56,7 @@ def menuAFL():
         if optionAFL == 1:
             user_instance.viewAccountInformation()
         elif optionAFL == 2:
-            inventory_instance.menuInventory()
+            menuInventory()
         elif optionAFL == 3:
             cart_instance.menuCart()
         elif optionAFL == 4:
