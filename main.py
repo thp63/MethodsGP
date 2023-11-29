@@ -58,7 +58,7 @@ def menuAFL():
         elif optionAFL == 2:
             menuInventory()
         elif optionAFL == 3:
-            cart_instance.menuCart()
+            menuCart()
         elif optionAFL == 4:
             user_instance.logout()
         else:

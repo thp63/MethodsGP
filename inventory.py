@@ -6,13 +6,13 @@ class Inventory:
         self.databaseName = databaseName
         self.tableName = tableName
 
-    def viewInventory():
+    def viewInventory(self):
         try:
             connection = sqlite3.connect("MethodsGPDB.db")
         except:
             print("Error: Connection Failed")
             sys.exit()
-        cursor = connection.cusor()
+        cursor = connection.cursor()
         cursor.execute("SELECT * FROM Inventory")
         result = cursor.fetchall()
         for i in result:
@@ -23,7 +23,7 @@ class Inventory:
         cursor.close()
         connection.close()
 
-    def searchInventory():
+    def searchInventory(self):
         try:
             connection = sqlite3.connect("MethodsGPDB.db")
         except:
