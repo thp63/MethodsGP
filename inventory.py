@@ -54,15 +54,18 @@ class Inventory:
             print("Error: Could not connect")
             sys.exit()
         cursor = connection.cursor()
-        query = "SELECT Stock FROM Inventory WHERE ISBN=?"
-        cursor.execute(query, (ISBN,))
+        query_select = "SELECT Stock FROM Inventory WHERE ISBN=?"
+        cursor.execute(query_select, (ISBN,))
         result = cursor.fetchall()
-
-        stock = result[0][0]
-        stock -= 1
-
-        query = "UPDATE Inventory SET Stock=? WHERE ISBN=?"
-        cursor.execute(query, stock, ISBN)
-        connection.commit()
+        if not result:
+            print(f"Error: No stock information found for ISBN {ISBN}")
+        else:
+            current_stock = result[0][0]
+            updated_stock = max(current_stock - 1, 0)
+            query_update = "UPDATE Inventory SET Stock=? WHERE ISBN=?"
+            cursor.execute(query_update, (updated_stock, ISBN))
+            connection.commit()
+            print(f"Stock decreased for ISBN {ISBN}. Updated stock: {updated_stock}")
         cursor.close()
         connection.close()
+        return
