@@ -58,13 +58,7 @@ class User:
             else:
                 break
 
-        # Validate Email
-        while True:
-            self.email = input("Email: ")
-            if not self.email.isalpha():
-                print("Invalid email format.")
-            else:
-                break
+        self.email = input("Email: ")
 
         # Validate Password
         while True:
