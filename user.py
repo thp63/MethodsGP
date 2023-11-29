@@ -53,7 +53,7 @@ class User:
         # Validate User ID
         while True:
             self.userId = input("User ID: ")
-            if not self.userId.isdigit():
+            if not self.userId.isalnum():
                 print("User ID must be a number.")
             else:
                 break
