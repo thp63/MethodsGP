@@ -30,7 +30,6 @@ class Cart:
         except: 
             print("Database Connection Failed")
             sys.exit()
-        self.ISBN = input("ISBN of Book to add: ")
         cursor = connection.cursor()
         cursor.execute("INSERT INTO CART (UserID, ISBN, Quantity) VALUES (" + userID + ", " + ISBN + ", 1)")
         connection.commit()
@@ -44,7 +43,6 @@ class Cart:
         except: 
             print("Database Connection Failed")
             sys.exit()
-        self.ISBN = input("ISBN of Book to remove: ")
         cursor = connection.cursor()
         cursor.execute("DELETE FROM Cart WHERE UserID=" + userID + ", ISBN=" + ISBN)
         cursor.close()

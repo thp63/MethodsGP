@@ -96,13 +96,13 @@ def menuCart():
         if optionCART == 1:
             menuAFL()
         elif optionCART == 2:
-            cart_instance.viewCart()
+            cart_instance.viewCart(user_instance.userID, inventory_instance)
         elif optionCART == 3:
-            cart_instance.addToCart()
+            cart_instance.addToCart(user_instance.userID, input("Enter ISBN to Add: "))
         elif optionCART == 4:
-            cart_instance.removeFromCart()
+            cart_instance.removeFromCart(user_instance.userID, input("Enter ISBN to Remove: "))
         elif optionCART == 5:
-            cart_instance.checkOut()
+            cart_instance.checkOut(user_instance.userID)
         else:
             print("Invalid option! Try again!\n")
         menuCart()
