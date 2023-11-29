@@ -1,4 +1,5 @@
 #Imports
+import sys
 #Import User Class and create instance so it can be properly used
 from user import User
 user_instance = User(dbName='MethodsGPDB.db', tableName='User')
@@ -29,8 +30,9 @@ def start():
         else:
             print("Invalid option! Try again!\n")
         menuBFL()
-        optionBFL = int(input("Option (0-3): "))
-print("Exiting...")
+        optionBFL = int(input("Option (0-2): "))
+    print("Exiting...")
+    sys.exit()
 
 #Menu before Login
 def menuBFL():
@@ -54,13 +56,13 @@ def menuAFL():
         elif optionAFL == 3:
             menuCart()
         elif optionAFL == 4:
-            if user_instance.logout() == True:
-                start()
+            user_instance.logout()
+            start()
         else:
             print("Invalid option! Try again!\n")
             menuAFL()
             optionAFL = int(input("Option (1-4): "))
-        menuAFL()
+    menuAFL()
 #Menu for Inventory
 def menuInventory():
     print("(1) Previous")
