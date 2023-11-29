@@ -54,8 +54,8 @@ class Inventory:
             print("Error: Could not connect")
             sys.exit()
         cursor = connection.cursor()
-        query_select = "SELECT Stock FROM Inventory WHERE ISBN=?"
-        cursor.execute(query_select, (ISBN,))
+        query = "SELECT Stock FROM Inventory WHERE ISBN=?"
+        cursor.execute(query, (ISBN,))
         result = cursor.fetchall()
         if not result:
             print(f"Error: No stock information found for ISBN {ISBN}")
