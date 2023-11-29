@@ -77,16 +77,30 @@ class User:
             else:
                 break
 
-        # Validate Address, City, and State
+        # Validate Address
         while True:
             self.address = input("Address: ")
-            self.city = input("City: ")
-            self.state = input("State: ")
-            if not (self.address.isalnum() and self.city.isalpha() and self.state.isalpha()):
-                print("Invalid characters in Address, City, or State.")
+            if not self.address.isalnum():
+                print("Invalid Address")
             else:
                 break
-
+        
+        #Validate City
+        while True:
+            self.city = input("City: ")
+            if not self.city.isalpha():
+                print("Invalid City")
+            else:
+                break
+        
+        #Validate State
+        while True:
+            self.state = input("State: ")
+            if not self.state.isalpha():
+                print("Invalid State")
+            else:
+                break
+            
         # Validate Zip 
         while True:
             self.zip = input("Zip: ")
