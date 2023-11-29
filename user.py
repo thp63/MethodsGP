@@ -31,7 +31,7 @@ class User:
     def logout(self):
         self.loggedIn = False
         self.userId = ""
-        return
+        return True
     def viewAccountInformation(self):
         try:
             connection = sqlite3.connect("MethodsGPDB.db")

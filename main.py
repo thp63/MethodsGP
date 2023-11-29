@@ -60,7 +60,8 @@ def menuAFL():
         elif optionAFL == 3:
             menuCart()
         elif optionAFL == 4:
-            user_instance.logout()
+            if user_instance.logout() == True:
+                menuBFL()
         else:
             print("Invalid option! Try again!\n")
         menuAFL()
