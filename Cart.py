@@ -71,7 +71,7 @@ class Cart:
             return
         else:
             print(result)
-            inventory_instance.decreaseStock(result)
+            inventory_instance.decreaseStock(result[0][0])
         query = ("DELETE FROM Cart WHERE UserID=?")
         values = ((userID,))
         cursor.execute(query,values)
