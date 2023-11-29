@@ -48,6 +48,7 @@ class Inventory:
         connection.close()
                 
     def decreaseStock(self, ISBN):
+        print("ISBN: ", ISBN)
         try:
             connection = sqlite3.connect("MethodsGPDB.db")
         except:
