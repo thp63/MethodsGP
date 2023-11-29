@@ -60,9 +60,8 @@ def menuAFL():
             start()
         else:
             print("Invalid option! Try again!\n")
-            menuAFL()
-            optionAFL = int(input("Option (1-4): "))
-    menuAFL()
+        menuAFL()
+        optionAFL = int(input("Option (1-4): "))
 #Menu for Inventory
 def menuInventory():
     print("(1) Previous")
