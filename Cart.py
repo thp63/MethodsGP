@@ -5,7 +5,7 @@ import sys
 
 class Cart:
 
-    def __init__(self, databaseName = 0, tableName = 0):
+    def __init__(self, databaseName = "", tableName = ""):
         self.databaseName = databaseName
         self.tablename = tableName
 
