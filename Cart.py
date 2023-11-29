@@ -65,7 +65,11 @@ class Cart:
         values = ((userID,))
         cursor.execute(query, values)
         result = cursor.fetchall()
-        inventory_instance.decreaseStock(result[0][0])
+        if not result:
+            print("Nothing in Cart")
+            return
+        else:
+            inventory_instance.decreaseStock(result[0][0])
         cursor.execute("DELETE * FROM Cart WHERE UserID=" + userID)
         cursor.close()
         connection.close()
