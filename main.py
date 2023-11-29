@@ -98,8 +98,10 @@ def menuCart():
         elif optionCART == 2:
             cart_instance.viewCart(user_instance.userId, inventory_instance)
         elif optionCART == 3:
+            inventory_instance.viewInventory()
             cart_instance.addToCart(user_instance.userId, input("Enter ISBN to Add: "))
         elif optionCART == 4:
+            cart_instance.viewCart(user_instance.userId, inventory_instance)
             cart_instance.removeFromCart(user_instance.userId, input("Enter ISBN to Remove: "))
         elif optionCART == 5:
             cart_instance.checkOut(user_instance.userId)
