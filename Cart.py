@@ -62,7 +62,7 @@ class Cart:
             sys.exit()
         print(userID)
         cursor = connection.cursor()
-        query = ("SELECT 'ISBN' FROM Cart WHERE UserID=?")
+        query = ("SELECT ISBN FROM Cart WHERE UserID=?")
         values = ((userID,))
         cursor.execute(query, values)
         result = cursor.fetchall()
