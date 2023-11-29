@@ -33,7 +33,7 @@ class Inventory:
         cursor = connection.cursor()
         title = input("Enter a title: ")
         query = "SELECT * FROM Inventory WHERE Title=?"
-        cursor.execute(query, title)
+        cursor.execute(query, (title,))
         result = cursor.fetchall()
 
         if not result:
@@ -55,7 +55,7 @@ class Inventory:
             sys.exit()
         cursor = connection.cursor()
         query = "SELECT Stock FROM Inventory WHERE ISBN=?"
-        cursor.execute(query, ISBN)
+        cursor.execute(query, (ISBN,))
         result = cursor.fetchall()
 
         stock = result[0][0]
