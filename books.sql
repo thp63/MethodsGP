@@ -1,8 +1,9 @@
-INSERT INTO `books` (`ISBN`, `Title`, `Author`, `Year`, `Genre`) VALUES
-('978-0156028356', 'The Color Purple', 'Alice Walker', 1982, 'Epistolary'),
-('978-0307265432', 'The Road', 'Cormac McCarthy', 2006, 'Post apocalyptic fiction'),
-('978-0312424404', 'Gilead', 'Marilynne Robinson', 2004, 'Novel'),
-('978-0446310789', 'To Kill a Mockingbird', 'Harper Lee', 1960, 'Southern Gothic'),
-('978-0451524935', '1984', 'George Orwell', 1949, 'Dystopian'),
-('978-1400033416', 'Beloved', 'Toni Morrison', 1987, 'American Literature'),
-('978-1501156748', 'Misery', 'Stephen King', 1987, 'Psychological Horror');
+INSERT INTO "Inventory" ("ISBN", "title", "author", "genre", "pages", "releaseDate", "stock")
+VALUES
+('9780156028356', 'The Color Purple', 'Alice Walker', 'Epistolary', 200, '1965', 3),
+('9780307265432', 'The Road', 'Cormac McCarthy', 'Post apocalyptic fiction', 300, '2004', 6),
+('9780312424404', 'Gilead', 'Marilynne Robinson', 'Novel', 230, '1980', 2),
+('9780446310789', 'To Kill a Mockingbird', 'Harper Lee', 'Southern Gothic', 182, '1964', 5),
+('9780451524935', '1984', 'George Orwell', 'Dystopian', 563, '1990', 9),
+('9781400033416', 'Beloved', 'Toni Morrison', 'American Literature', 124, '1954', 4),
+('9781501156748', 'Misery', 'Stephen King', 'Psychological Horror', 320, '2002', 8);
